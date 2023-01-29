@@ -1,0 +1,19 @@
+spring.jpa:
+  database: postgresql
+  hibernate.dialect: org.hibertate.dilect.PostgreSQLDialect
+  hibernate.ddl-auto: update
+  properties.hibernate.format_sql: true
+  show-sql: true
+
+spring.datasource:
+  hikari.maximum-pool-size: 4
+  url: jdbc:postgresql://localhost:5432/fastcampus_sns
+  username: admin_fastcampus_sns
+  password: admin_fastcampus_sns
+  platform: postgres
+  driver-class-name: org.postgresql.Driver
+
+jwt:
+  secret-key: fast_campus.sns-application-2022.secret_key
+  # 30 days
+  token.expired-time-ms: 2592000000
