@@ -29,8 +29,10 @@ public class UserService {
     @Value("${jwt.token.expired-time-ms}")
     private long expiredTimeMs;
 
-
-
+    public User loadUserByUserName(String userName) {
+        return userEntityRepository.findByUserName(userName).map(User::fromEntity).orElseThrow(()
+                -> new SnsApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userName)));
+    }
 
     @Transactional
     public User join(String userName, String password) {
@@ -51,7 +53,7 @@ public class UserService {
         UserEntity userEntity = userEntityRepository.findByUserName(userName).orElseThrow(() -> new SnsApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userName)));
 
         // 비밀번호 체크
-        if(!encoder.matches(password, userEntity.getPassword())) {
+        if (!encoder.matches(password, userEntity.getPassword())) {
 //        if(!userEntity.getPassword().equals(password)) {
             throw new SnsApplicationException(ErrorCode.INVALID_PASSWORD);
         }
