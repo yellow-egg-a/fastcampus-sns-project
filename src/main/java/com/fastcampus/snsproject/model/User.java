@@ -12,7 +12,6 @@ import java.util.Collection;
 import java.util.List;
 
 // DTO : service 단에서 사용
-// TODO : implement
 @Getter
 @AllArgsConstructor
 public class User implements UserDetails {

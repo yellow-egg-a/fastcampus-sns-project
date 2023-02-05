@@ -2,6 +2,7 @@ package com.fastcampus.snsproject.model.entity;
 
 import com.fastcampus.snsproject.model.UserRole;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -15,8 +16,9 @@ import java.time.Instant;
 @Table(name = "\"user\"")
 @Getter
 @Setter
-@SQLDelete(sql = "UPDATE \"user\" SET deleted_at = NOW() where id = ?")
+@SQLDelete(sql = "UPDATE \"user\" SET deleted_at = NOW() WHERE id = ?")
 @Where(clause = "deleted_at is NULL")
+@NoArgsConstructor
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

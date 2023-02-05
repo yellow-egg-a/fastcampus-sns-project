@@ -1,17 +1,15 @@
 package com.fastcampus.snsproject.model;
 
 import com.fastcampus.snsproject.model.entity.PostEntity;
-import com.fastcampus.snsproject.model.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Getter
 @AllArgsConstructor
 public class Post {
-    private Integer id;
+    private Integer id = null;
     private String title;
     private String body;
     private User user;
