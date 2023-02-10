@@ -46,7 +46,8 @@ public class JWtTokenFilter extends OncePerRequestFilter {
             }
 
             String userName = JwtTokenUtils.getUserName(token, key);
-            User user = userService.loadUserByUserName(userName);
+            User user = userService.loadUserByUserName(userName); // DB I/O 1회 발생
+
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                     user, null, user.getAuthorities()
